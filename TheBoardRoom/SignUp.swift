@@ -1,17 +1,41 @@
-//
-//  SignUp.swift
-//  TheBoardRoom
-//
-//  Created by Malachi  on 2/27/25.
-//
-
 import SwiftUI
 
 struct SignUp: View {
+    @State private var email: String = "";
+    @State private var password: String = "";
+    @State private var IsLoggedIn: Bool = false;
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+        NavigationStack {
+            ZStack {
+                
+                VStack {
+                    Text("Welcome")
+                        .font(.largeTitle)
+                        .padding()
+                    TextField("Email", text: $email)
+                        
+                    SecureField("Password", text:$password)
+                    NavigationLink (destination: SignUp()){
+                        Button(action: {
+                            IsLoggedIn.toggle()
+                        }) {
+                            Text("SignUp")
+                        }
+                        .frame(maxWidth: .infinity) // Makes the button full width
+                        .padding()
+                        .background(Color.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(30)
+                    }
+                }
+                
+            }
+        }
+        .padding()
+        .padding(.horizontal)
+        .padding(.bottom, 5.0)
+    }}
 
 #Preview {
     SignUp()
